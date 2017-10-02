@@ -1,43 +1,31 @@
-# Simple image to run ionic framework
-[![](https://badge.imagelayers.io/agileek/ionic-framework:latest.svg)](https://imagelayers.io/?images=agileek/ionic-framework:latest 'Get your own badge on imagelayers.io')
-## Usage
+# IONIC 3
+## Como usar
 
 ```
-docker run -ti --rm -p 8100:8100 -p 35729:35729 agileek/ionic-framework
+docker run -ti --rm -p 8100:8100 -p 35729:35729 kidoncio/ionic-docker
 ```
-If you have your own ionic sources, you can launch it with:
-
-```
-docker run -ti --rm -p 8100:8100 -p 35729:35729 -v /path/to/your/ionic-project/:/myApp:rw agileek/ionic-framework:1.4.5
-```
-
-### Automation
-With this alias:
+Se você já possuí um projeto em andamento:
 
 ```
-alias ionic="docker run -ti --rm -p 8100:8100 -p 35729:35729 --privileged -v /dev/bus/usb:/dev/bus/usb -v ~/.gradle:/root/.gradle -v \$PWD:/myApp:rw agileek/ionic-framework:1.4.5 ionic"
+docker run -ti --rm -p 8100:8100 -p 35729:35729 -v /caminho/do/seu/projeto-ionic/:/myApp:rw kidoncio/ionic-docker:latest
 ```
 
-> Due to a bug in ionic, if you want to use ionic serve, you have to use --net host option :
+### Automação
+Usando como alias:
 
 ```
-alias ionic="docker run -ti --rm --net host --privileged -v /dev/bus/usb:/dev/bus/usb -v ~/.gradle:/root/.gradle -v \$PWD:/myApp:rw agileek/ionic-framework:1.4.5 ionic"
+alias ionic="docker run -ti --rm -p 8100:8100 -p 35729:35729 --privileged -v /dev/bus/usb:/dev/bus/usb -v ~/.gradle:/root/.gradle -v /caminho/do/seu/projeto-ionic/:/myApp:rw kidoncio/ionic-docker ionic"
 ```
 
-> Know you need gradle for android, I suggest to mount ~/.gradle into /root/.gradle to avoid downloading the whole planet again and again
-
-you can follow the [ionic tutorial](http://ionicframework.com/getting-started/) (except for the ios part...) without having to install ionic nor cordova nor nodejs on your computer.
-
-```bash
-ionic start myApp tabs
-cd myApp
-ionic serve
-# If you didn't used --net host, be sure to chose the ip address, not localhost, or you would not be able to use it
+> Devido a um bug no ionic, se você quiser usar o ionic serve, você deve usar a opção --net host:
 ```
-open http://localhost:8100 and everything works.
+alias ionic="docker run -ti --rm --net host --privileged -v /dev/bus/usb:/dev/bus/usb -v ~/.gradle:/root/.gradle -v /caminho/do/seu/projeto-ionic/:/myApp:rw kidoncio/ionic-docker ionic"
+```
 
-### Android tests
-You can test on your android device, just make sure that debugging is enabled.
+Basta abrir o http://localhost:8100 e estará tudo supimpa.
+
+### Tests no Android
+Você pode tranquilamente testar no seu android, basta ter certeza de que o debug está habilitado nele.
 
 ```bash
 cd myApp
@@ -47,14 +35,6 @@ ionic run android
 ```
 
 ## FAQ
-* The application is not installed on my android device
-  * Try `docker run -ti --rm -p 8100:8100 -p 35729:35729 --privileged -v /dev/bus/usb:/dev/bus/usb -v \$PWD:/myApp:rw agileek/ionic-framework adb devices` your device should appear
-* The adb devices show nothing whereas I can see it when I do `adb devices` on my computer
-  * You can't have adb inside and outside docker at the same time, be sure to `adb kill-server` on your computer before using this image
-
-## Coming next
-Support for android emulation with X11 forwarding
-
-```bash
-ionic platform emulate android
-```
+* A aplicação não está instalada no meu equipamento
+  * Tente: `docker run -ti --rm -p 8100:8100 -p 35729:35729 --privileged -v /dev/bus/usb:/dev/bus/usb -v \$PWD:/myApp:rw agileek/ionic-framework adb devices` e o seu aparelho deve aparecer :D
+* Se você não estiver conseguindo usar o `adb devices`, isso se deve pelo fato de já estar rodando em alguma parte do seu sistema. Tente matar o processo (`adb kill-server`) e tente novamente.
