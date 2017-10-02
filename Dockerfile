@@ -1,5 +1,5 @@
 FROM  ubuntu:17.04
-LABEL maintainer="bitard [dot] michael [at] gmail [dot] com"
+LABEL maintainer="lucas@lapou.com.br"
 
 ENV DEBIAN_FRONTEND=noninteractive \
     ANDROID_HOME=/opt/android-sdk-linux \
@@ -19,9 +19,11 @@ RUN apt-get update &&  \
     npm install -g cordova@"$CORDOVA_VERSION" ionic@"$IONIC_VERSION" && \
     npm cache clear --force && \
     gem install sass && \
-    git config --global user.email "you@example.com" && \
-    git config --global user.name "Your Name" && \
+    git config --global user.email "lucas@lapou.com.br" && \
+    git config --global user.name "Lucas Nascimento" && \
     ionic start myApp sidemenu --no-interactive
+
+
 #ANDROID
 #JAVA
 
