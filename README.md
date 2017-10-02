@@ -36,5 +36,5 @@ ionic run android
 
 ## FAQ
 * A aplicação não está instalada no meu equipamento
-  * Tente: `docker run -ti --rm -p 8100:8100 -p 35729:35729 --privileged -v /dev/bus/usb:/dev/bus/usb -v \$PWD:/myApp:rw agileek/ionic-framework adb devices` e o seu aparelho deve aparecer :D
+  * Tente: `docker run -ti --rm -p 8100:8100 -p 35729:35729 --privileged -v /dev/bus/usb:/dev/bus/usb -v \$PWD:/myApp:rw kidoncio/ionic-docker adb devices` e o seu aparelho deve aparecer :D
 * Se você não estiver conseguindo usar o `adb devices`, isso se deve pelo fato de já estar rodando em alguma parte do seu sistema. Tente matar o processo (`adb kill-server`) e tente novamente.
