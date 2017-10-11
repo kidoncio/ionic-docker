@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     ANDROID_HOME=/opt/android-sdk-linux \
     NODE_VERSION=8.6.0 \
     NPM_VERSION=5.4.2 \
-    IONIC_VERSION=3.12.0 \
+    IONIC_VERSION=3.13.0 \
     CORDOVA_VERSION=7.0.1 \
     GRADLE_VERSION=4.2
 
