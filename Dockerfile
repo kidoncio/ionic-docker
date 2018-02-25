@@ -4,18 +4,17 @@ LABEL maintainer="lucas@lapou.com.br"
 ENV DEBIAN_FRONTEND=noninteractive \
     ANDROID_HOME=/opt/android-sdk-linux \
     NODE_VERSION=8.9.1 \
-    NPM_VERSION=5.5.1 \
     IONIC_VERSION=3.19.1 \
     CORDOVA_VERSION=7.0.0 \
     GRADLE_VERSION=4.5.1
 
 # Install basics
 RUN apt-get update &&  \
-    apt-get install -g -y git wget curl unzip ruby ruby-dev gcc make && \
-    curl --retry 3 -SLO "http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" && \
+    apt-get install -g -y git wget curl unzip ruby ruby-dev gcc make
+    
+RUN curl --retry 3 -SLO "http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" && \
     tar -xzf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1 && \
     rm "node-v$NODE_VERSION-linux-x64.tar.gz" && \
-    npm install -g npm@"$NPM_VERSION" && \
     npm install -g cordova@"$CORDOVA_VERSION" && \
     npm install -g ionic@"$IONIC_VERSION" && \
     npm cache clear --force && \
