@@ -19,7 +19,7 @@ RUN curl --retry 3 -SLO "http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSI
     npm install -g ionic@"$IONIC_VERSION" && \
     npm cache clear --force && \
     gem install sass --no-user-install && \
-    ionic start myApp sidemenu --no-interactive
+    ionic start myApp sidemenu --no-interactive --no-git --no-link
 
 
 #ANDROID
