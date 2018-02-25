@@ -69,4 +69,3 @@ RUN cd myApp && \
 
 WORKDIR myApp
 EXPOSE 8100 35729
-CMD ["ionic", "serve"]
