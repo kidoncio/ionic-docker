@@ -1,4 +1,4 @@
-FROM  ubuntu:17.04
+FROM  ubuntu:16.04
 LABEL maintainer="lucas@lapou.com.br"
 
 ENV DEBIAN_FRONTEND=noninteractive \
